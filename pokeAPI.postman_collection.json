@@ -1,0 +1,245 @@
+{
+  "info": {
+    "_postman_id": "a75495c6-197d-434d-b74f-7acdf1967217",
+    "name": "My Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52919916",
+    "_collection_link": "https://go.postman.co/collection/52919916-a75495c6-197d-434d-b74f-7acdf1967217?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "pokeAPI",
+      "item": [
+        {
+          "name": "buscar Pokemon",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{version}}pokemon-species/aegislash",
+              "host": [
+                "{{baseURL}}{{version}}pokemon-species"
+              ],
+              "path": [
+                "aegislash"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "buscar Berries",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "// No início do script ou no Pre-request Script\r",
+                  "var jsonData = pm.response.json();\r",
+                  "\r",
+                  "// Isso garante que a variável global sempre seja igual ao que a API retornou\r",
+                  "pm.globals.set(\"berry_name\", jsonData.name); \r",
+                  "\r",
+                  "pm.test(\"Body contains name validation\", function () {\r",
+                  "    var nameFromResponse = jsonData.name;\r",
+                  "    // Agora isso sempre será verdadeiro\r",
+                  "    pm.expect(nameFromResponse).to.eql(pm.globals.get(\"berry_name\"));\r",
+                  "});\r",
+                  "\r",
+                  "pm.globals.clear();\r",
+                  "\r",
+                  "/*\r",
+                  "pm.test(\"Body contains the berry name\", function () {\r",
+                  "    var name = pm.response.json().name\r",
+                  "    console.log(name);\r",
+                  "    pm.expect(name).to.include(pm.globals.get(\"berry_name\"))\r",
+                  "\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"Body contains name validation\", function () {\r",
+                  "   // acessar o campo 'name' do json\r",
+                  "   var jsonData = pm.response.json(); // guardando o json em uma variável\r",
+                  "   var nameFromResponse = jsonData.name; // acessando o campo 'name' do json\r",
+                  "    console.log(\"Nome da resposta \" + nameFromResponse);\r",
+                  "\r",
+                  "    pm.expect(nameFromResponse).to.eql(pm.globals.get(\"berry_name\"));\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Body contains firmness validation\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    // Exemplo para Cheri, a firmeza é \"soft\"\r",
+                  "    pm.expect(jsonData.firmness.name).to.not.be.undefined;\r",
+                  "    console.log(\"Firmeza: \" + jsonData.firmness.name);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Body tem a string\", function(){\r",
+                  "    pm.expect(pm.response.text()).to.include(\"hard\");\r",
+                  "})\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response body contains string\", function(){\r",
+                  "    pm.expect(pm.response.text()).to.include(\"cheri\");\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"Capturar os resultados de uma berry\",function(){\r",
+                  "    var berry_name = pm.response.json().results;\r",
+                  "    console.log(berry_name)\r",
+                  "    pm.globals.set(\"berry_name\", berry_name[3].name)\r",
+                  "})*/"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{version}}/berry/rawst",
+              "host": [
+                "{{baseURL}}{{version}}"
+              ],
+              "path": [
+                "berry",
+                "rawst"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "buscar Berries",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{version}}/berry/",
+                  "host": [
+                    "{{baseURL}}{{version}}"
+                  ],
+                  "path": [
+                    "berry",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": ":status",
+                  "value": 200
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 09 Mar 2026 12:09:17 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "258"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "public, max-age=86400, s-maxage=86400"
+                },
+                {
+                  "key": "content-encoding",
+                  "value": "br"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"51e-/L42K3zWwPm0x5yJT9IDPo0JjGk\""
+                },
+                {
+                  "key": "function-execution-id",
+                  "value": "1jukp8h6mn63"
+                },
+                {
+                  "key": "server",
+                  "value": "cloudflare"
+                },
+                {
+                  "key": "strict-transport-security",
+                  "value": "max-age=31556926"
+                },
+                {
+                  "key": "x-cloud-trace-context",
+                  "value": "4c146acce20c6ea39b62bdfb129945d2"
+                },
+                {
+                  "key": "x-country-code",
+                  "value": "BR"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "accept-ranges",
+                  "value": "bytes"
+                },
+                {
+                  "key": "x-served-by",
+                  "value": "cache-gru-sbsp2090031-GRU"
+                },
+                {
+                  "key": "x-cache",
+                  "value": "HIT"
+                },
+                {
+                  "key": "x-cache-hits",
+                  "value": "0"
+                },
+                {
+                  "key": "x-timer",
+                  "value": "S1772354476.117624,VS0,VE887"
+                },
+                {
+                  "key": "vary",
+                  "value": "Accept-Encoding,cookie,need-authorization, x-fh-requested-host, accept-encoding"
+                },
+                {
+                  "key": "alt-svc",
+                  "value": "h3=\":443\"; ma=86400"
+                },
+                {
+                  "key": "cf-cache-status",
+                  "value": "REVALIDATED"
+                },
+                {
+                  "key": "nel",
+                  "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                },
+                {
+                  "key": "report-to",
+                  "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=piCpddunnXcADX2joT8oCDo%2FTjnpW5zQSLQHZ5eyjXoGM%2FLzY22eOFkZKsIaxAp7Rqwg1jf9XmYwAdaccWT9F44hmg93Wa6%2Bv0c%3D\"}]}"
+                },
+                {
+                  "key": "cf-ray",
+                  "value": "9d99f847fa13b127-GRU"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"count\": 64,\n    \"next\": \"https://pokeapi.co/api/v2/berry/?offset=20&limit=20\",\n    \"previous\": null,\n    \"results\": [\n        {\n            \"name\": \"cheri\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/1/\"\n        },\n        {\n            \"name\": \"chesto\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/2/\"\n        },\n        {\n            \"name\": \"pecha\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/3/\"\n        },\n        {\n            \"name\": \"rawst\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/4/\"\n        },\n        {\n            \"name\": \"aspear\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/5/\"\n        },\n        {\n            \"name\": \"leppa\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/6/\"\n        },\n        {\n            \"name\": \"oran\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/7/\"\n        },\n        {\n            \"name\": \"persim\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/8/\"\n        },\n        {\n            \"name\": \"lum\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/9/\"\n        },\n        {\n            \"name\": \"sitrus\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/10/\"\n        },\n        {\n            \"name\": \"figy\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/11/\"\n        },\n        {\n            \"name\": \"wiki\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/12/\"\n        },\n        {\n            \"name\": \"mago\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/13/\"\n        },\n        {\n            \"name\": \"aguav\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/14/\"\n        },\n        {\n            \"name\": \"iapapa\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/15/\"\n        },\n        {\n            \"name\": \"razz\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/16/\"\n        },\n        {\n            \"name\": \"bluk\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/17/\"\n        },\n        {\n            \"name\": \"nanab\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/18/\"\n        },\n        {\n            \"name\": \"wepear\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/19/\"\n        },\n        {\n            \"name\": \"pinap\",\n            \"url\": \"https://pokeapi.co/api/v2/berry/20/\"\n        }\n    ]\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
