@@ -3,7 +3,7 @@
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-Este repositório contém uma suíte de testes automatizados para a [PokeAPI](https://pokeapi.co/), desenvolvida como parte de um projeto de validação de qualidade (QA) em APIs REST.
+Este repositório contém uma suíte de testes automatizados para a [PokeAPI](https://pokeapi.co/), desenvolvida como parte de um projeto de validação de qualidade (QA) em APIs REST e Scripts.
 
 ## 🎯 Objetivo do Projeto
 Validar o comportamento dos endpoints de "Berries" da PokeAPI, garantindo que as informações de nome, status code e atributos de firmeza (firmness) estejam retornando corretamente conforme a documentação oficial.
